@@ -1,0 +1,30 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.lerneng.b1cards'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId 'com.lerneng.b1cards'
+        minSdk 21
+        targetSdk 34
+        versionCode 1
+        versionName '1.0'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+// Застосунок навмисно не має зовнішніх залежностей (тільки стандартний Android SDK),
+// щоб збірка була максимально простою й надійною.
