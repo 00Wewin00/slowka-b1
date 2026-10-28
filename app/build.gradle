@@ -1,0 +1,42 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.lerneng.b1cards'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId 'com.lerneng.b1cards'
+        minSdk 21
+        targetSdk 34
+        versionCode 3
+        versionName '1.2'
+    }
+
+    // Stały klucz podpisu: dzięki niemu każda nowa wersja APK instaluje się NA WIERZCH
+    // poprzedniej i nie kasuje postępu (czarna lista, seria, własne zestawy).
+    // Bez tego GitHub generuje za każdym razem nowy klucz i Android odmawia aktualizacji.
+    signingConfigs {
+        debug {
+            storeFile file('debug.keystore')
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+// Aplikacja celowo nie ma zewnętrznych zależności (tylko standardowe Android SDK),
+// żeby budowanie było jak najprostsze i najpewniejsze.
